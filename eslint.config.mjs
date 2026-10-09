@@ -1,0 +1,15 @@
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+
+export default defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  {
+    rules: {
+      // as imagens são <img> como no protótipo (já otimizadas em webp, sem next/image)
+      "@next/next/no-img-element": "off",
+    },
+  },
+  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "prototipo/**"]),
+]);

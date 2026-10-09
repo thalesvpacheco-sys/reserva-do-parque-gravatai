@@ -1,0 +1,77 @@
+/*
+ * Tailwind 4 sem o preflight: o reset é o do protótipo (fim do lp.css),
+ * assim a renderização fica igual à do prototipo/index.html.
+ */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme inline {
+  --color-verde: var(--verde);
+  --color-verde-escuro: var(--verde-escuro);
+  --color-areia: var(--areia);
+  --color-ipe: var(--ipe);
+  --color-noite: var(--noite);
+  --color-papel: var(--papel);
+  --font-sans: var(--f-texto);
+}
+
+/*
+ * Paleta tirada das 4 versões oficiais do logo (ver docs/MARCA.md).
+ * Tema único (sem dark mode): é LP de marca.
+ */
+:root {
+  --verde: #026938;
+  --verde-escuro: #172f1b;
+  --areia: #d7cbae;
+  --areia-clara: #f4efe4;
+  --tinta: #1d1d1b;
+  --tinta-suave: #4a4a45;
+  --branco: #ffffff;
+  --erro: #b42318;
+  /* apoio de interface */
+  --noite: #0f1f12;
+  --papel: #f7f6f1;
+  --ipe: #e2b53e;
+  --linha-escura: rgba(29, 29, 27, 0.14);
+  --linha-clara: rgba(215, 203, 174, 0.22);
+  --gutter: clamp(16px, 4vw, 56px);
+  /* tipografia: Plus Jakarta Sans em títulos e texto */
+  --f-titulo: var(--font-jakarta), "Segoe UI", system-ui, sans-serif;
+  --f-texto: var(--font-jakarta), "Segoe UI", system-ui, sans-serif;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--branco);
+  color: var(--tinta);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ipe);
+  outline-offset: 3px;
+}
+
+h1,h2,h3,h4,p{font-size:inherit;font-weight:inherit}
+body{margin:0;font-family:var(--f-texto)}
