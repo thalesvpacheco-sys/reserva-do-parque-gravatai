@@ -501,14 +501,14 @@ export const teaser = {
     titulo: "Uma empresa com solidez nacional",
     texto1: {
       antes: "Unindo experiência em ",
-      estados: "8 estados",
+      estados: "11 estados",
       depois: ", nas 5 regiões do Brasil, a Nova Harmonia traz desenvolvimento urbano com o compromisso de entregar sempre um elevado padrão de qualidade.",
     },
     texto2:
       "Viamão é um excelente exemplo de como trabalhamos e agora está chegando o momento de fazer tudo isso para que sua família possa viver ainda melhor com a visão de futuro que está chegando para Gravataí, Cachoeirinha e Canoas.",
     cta: "Quero saber de tudo em primeira-mão.",
     numeros: [
-      { v: 8, rotulo: "estados", confirmar: true },
+      { v: 11, rotulo: "estados", confirmar: true },
       { v: 5, rotulo: "regiões do Brasil", confirmar: false },
     ],
   },

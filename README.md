@@ -81,7 +81,7 @@ Também pendentes, fora do código:
 - Conteúdo em `teaser` (`src/dados.ts`), componentes em `src/secoes/teaser/` e estilos em `src/app/teaser-aprovacao/teaser.css`. Todas as classes levam o prefixo `tz-`, porque o `lp.css` é global.
 - Fora dos buscadores: `noindex` na página, bloqueada no `robots.txt` e fora do `sitemap.xml`.
 - O cadastro valida os campos, mas **não envia nada** (a confirmação avisa isso). Para ligar de verdade, poste em `/api/lead/` como o `LeadForm` faz e crie um `cf_empreendimento` próprio para o teaser, senão o lead entra no RD como Reserva do Parque.
-- Pendências marcadas com tracejado (passe o mouse para ver a pergunta): número de estados (8) e telefone `(51) 99719-6426`, que é o das outras LPs.
+- Pendências marcadas com tracejado (passe o mouse para ver a pergunta): número de estados (11) e telefone `(51) 99719-6426`, que é o das outras LPs.
 - Imagens em `public/img/teaser/`. O JSON-LD da LP fica em `src/secoes/JsonLd.tsx` e só a home usa.
 
 ## Lead
