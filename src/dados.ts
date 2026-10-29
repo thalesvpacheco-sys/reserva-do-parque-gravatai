@@ -442,3 +442,111 @@ export const rodape = {
   topo: "Voltar ao topo",
 };
 
+
+/*
+ * Teaser da Nova Harmonia para Gravataí, Cachoeirinha e Canoas (rota /teaser-aprovacao/).
+ * Página de aprovação: o cadastro dela não envia dados. "confirmar" marca o que ainda
+ * precisa de resposta do cliente e aparece com o tracejado .tz-pend.
+ */
+const teaserImg = (nome: string) => `/img/teaser/${nome}.webp`;
+const teaserObra = (nome: string, local: string, arquivo: string, largura = 1600, altura = 900) => ({
+  src: teaserImg(arquivo),
+  largura,
+  altura,
+  nome,
+  local,
+  alt: `${nome}, ${local}`,
+});
+
+export const teaser = {
+  url: "/teaser-aprovacao/",
+  seo: {
+    titulo: "Nova Harmonia | Novidades para Gravataí, Cachoeirinha e Canoas",
+    descricao:
+      "A Nova Harmonia está preparando algo grande para a região de Gravataí, Cachoeirinha e Canoas. Cadastre-se e receba as novidades antes de todo mundo.",
+    og: { imagem: teaserImg("viamao-por-do-sol"), largura: 1918, altura: 1080, alt: "Pôr do sol no Parque Harmonia, em Viamão" },
+  },
+  logo: { src: "/img/logo/logo-nova-harmonia.svg", alt: "Nova Harmonia", largura: 266, altura: 157 },
+  confirmar: {
+    estados: "Thayná, por favor confirmar esse número",
+    telefone: "Número das outras LPs; confirmar o oficial do teaser",
+  },
+  hero: {
+    titulo: "A Nova Harmonia está preparando **algo grande** para a região de Gravataí, Cachoeirinha e Canoas.",
+    texto:
+      "Muito em breve teremos novidades que farão a diferença na vida de muitas pessoas, tal como já fizemos em Viamão e em diversos estados brasileiros.",
+    cta: "Cadastre-se para ter acesso exclusivo às novidades antes de todo mundo.",
+    role: "Role",
+  },
+  zoom: {
+    rotulo: "Parque Harmonia · Viamão · RS",
+    frase: "Viamão é um excelente exemplo de como trabalhamos.",
+    etapas: ["Brasil", "Rio Grande do Sul", "Viamão"],
+    mapa: {
+      src: teaserImg("mapa-brasil"),
+      largura: 3970,
+      altura: 2978,
+      alt: "Mapa do Brasil com os estados onde a Nova Harmonia atua e os futuros lançamentos",
+      pino: "Gravataí · Cachoeirinha · Canoas",
+    },
+    aerea: { src: teaserImg("viamao-aerea"), largura: 1903, altura: 1071, alt: "Parque Harmonia, em Viamão, visto do alto" },
+    porDoSol: {
+      src: teaserImg("viamao-eu-viamao"),
+      largura: 1600,
+      altura: 900,
+      alt: "Letreiro Eu amo Viamão ao pôr do sol, no Parque Harmonia",
+    },
+  },
+  solidez: {
+    titulo: "Uma empresa com solidez nacional",
+    texto1: {
+      antes: "Unindo experiência em ",
+      estados: "8 estados",
+      depois: ", nas 5 regiões do Brasil, a Nova Harmonia traz desenvolvimento urbano com o compromisso de entregar sempre um elevado padrão de qualidade.",
+    },
+    texto2:
+      "Viamão é um excelente exemplo de como trabalhamos e agora está chegando o momento de fazer tudo isso para que sua família possa viver ainda melhor com a visão de futuro que está chegando para Gravataí, Cachoeirinha e Canoas.",
+    cta: "Quero saber de tudo em primeira-mão.",
+    numeros: [
+      { v: 8, rotulo: "estados", confirmar: true },
+      { v: 5, rotulo: "regiões do Brasil", confirmar: false },
+    ],
+  },
+  obras: {
+    rotulo: "Tal como já fizemos",
+    titulo: "Em Viamão e em diversos estados brasileiros.",
+    rotuloLista: "Obras da Nova Harmonia pelo Brasil",
+    ant: "Obra anterior",
+    prox: "Próxima obra",
+    itens: [
+      teaserObra("Parque Harmonia", "Viamão · RS", "viamao-por-do-sol", 1918, 1080),
+      teaserObra("Reserva dos Babaçus", "Teresina · PI", "teresina-parque", 1919, 1080),
+      teaserObra("The One", "Maranhão", "maranhao-portico"),
+      teaserObra("Reserva dos Babaçus", "Teresina · PI", "teresina-portico", 1919, 1080),
+      teaserObra("The One", "Maranhão", "maranhao-praca"),
+    ],
+    breve: { rotulo: "Muito em breve", titulo: "Gravataí, Cachoeirinha e Canoas" },
+  },
+  familia: {
+    imagem: { src: teaserImg("familia"), largura: 1440, altura: 600, alt: "Família feliz em frente a casa em construção" },
+    titulo: "Conheça o nível de atuação da Nova Harmonia pelo Brasil e prepare-se para dar um importante passo em sua vida.",
+    cta: "Tenho interesse em receber mais informações!",
+  },
+  cadastro: {
+    rotulo: "Acesso exclusivo",
+    nome: { rotulo: "Nome", placeholder: "Seu nome completo" },
+    telefone: { rotulo: "WhatsApp", placeholder: "(00) 00000-0000" },
+    cidade: { rotulo: "Cidade", opcoes: ["Gravataí", "Cachoeirinha", "Canoas", "Outra"] },
+    email: { rotulo: "E-mail", placeholder: "voce@email.com" },
+    enviar: "Enviar cadastro",
+    fechar: "Fechar",
+    okTitulo: "Cadastro recebido.",
+    ok: "Você vai receber as novidades antes de todo mundo.",
+    aviso: "Versão de aprovação: nenhum dado foi enviado.",
+  },
+  rodape: {
+    telefone: "(51) 99719-6426",
+    site: "novaharmonia.com.br",
+    copyright: "© 2026 Nova Harmonia · Imagens ilustrativas",
+  },
+};

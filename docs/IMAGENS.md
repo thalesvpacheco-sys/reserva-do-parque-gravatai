@@ -30,5 +30,6 @@ As perspectivas e fotos são do Morada dos Pássaros e servem só de referência
 | `grupo/` | `grupo-paisagem`, `grupo-entrada`, `grupo-atacarejo`, `grupo-hotel` | faixa de setores do Grupo SFA |
 | `outros/` | `outros-*.webp` | cards dos outros empreendimentos |
 | `og/` | `og.jpg` | compartilhamento (Open Graph e Twitter) |
+| `teaser/` | `mapa-brasil`, `viamao-aerea`, `viamao-eu-viamao`, `viamao-por-do-sol`, `teresina-*`, `maranhao-*`, `familia` | teaser `/teaser-aprovacao/` (mapa do zoom, obras e foto da família). Imagens reais do cliente |
 
 O brief previa uma pasta `banners/`. O hero e as faixas de largura total usam os mesmos arquivos da galeria, então eles ficaram só em `carrosseis/` para não duplicar.

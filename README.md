@@ -40,12 +40,14 @@ src/
   app/
     layout.tsx       fonte, metadata (SEO, Open Graph) e JSON-LD (Organization, Place, FAQPage)
     page.tsx         monta as seções na ordem do protótipo
+    teaser-aprovacao/  rota /teaser-aprovacao/ (page.tsx e teaser.css), ver "Teaser de aprovação"
     globals.css      Tailwind (theme + utilities) e tokens
     lp.css           classes do protótipo, com os mesmos nomes
     icon.png, robots.ts, sitemap.ts
     api/lead/route.ts
   dados.ts           TODO o conteúdo (textos, números, links, imagens, meta tags)
-  secoes/            um componente por seção, mais Contador, Texto (Rico/Valor), util, useSwipe e whatsapp
+  secoes/            um componente por seção, mais Contador, JsonLd, Texto (Rico/Valor), util, useSwipe e whatsapp
+    teaser/          componentes do teaser de aprovação
 ```
 
 Nenhum texto fica dentro de `src/secoes/`. Para mudar conteúdo, edite `src/dados.ts`. Nos textos, `**assim**` vira `<strong>` e `*assim*` vira `<em>`.
@@ -71,6 +73,16 @@ Também pendentes, fora do código:
 
 - Os textos da seção "O bairro" foram escritos para o protótipo e precisam de aprovação.
 - As imagens são do Morada dos Pássaros, só de referência. Veja [docs/IMAGENS.md](docs/IMAGENS.md).
+
+## Teaser de aprovação
+
+`/teaser-aprovacao/` é a página do teaser da Nova Harmonia para Gravataí, Cachoeirinha e Canoas, publicada aqui só para o cliente aprovar. Não faz parte da LP do Reserva do Parque.
+
+- Conteúdo em `teaser` (`src/dados.ts`), componentes em `src/secoes/teaser/` e estilos em `src/app/teaser-aprovacao/teaser.css`. Todas as classes levam o prefixo `tz-`, porque o `lp.css` é global.
+- Fora dos buscadores: `noindex` na página, bloqueada no `robots.txt` e fora do `sitemap.xml`.
+- O cadastro valida os campos, mas **não envia nada** (a confirmação avisa isso). Para ligar de verdade, poste em `/api/lead/` como o `LeadForm` faz e crie um `cf_empreendimento` próprio para o teaser, senão o lead entra no RD como Reserva do Parque.
+- Pendências marcadas com tracejado (passe o mouse para ver a pergunta): número de estados (8) e telefone `(51) 99719-6426`, que é o das outras LPs.
+- Imagens em `public/img/teaser/`. O JSON-LD da LP fica em `src/secoes/JsonLd.tsx` e só a home usa.
 
 ## Lead
 

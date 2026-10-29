@@ -10,6 +10,7 @@ import Header from "@/secoes/Header";
 import HeroPainel from "@/secoes/HeroPainel";
 import Imersivo from "@/secoes/Imersivo";
 import Infraestrutura from "@/secoes/Infraestrutura";
+import JsonLd from "@/secoes/JsonLd";
 import Lazer from "@/secoes/Lazer";
 import Legal from "@/secoes/Legal";
 import Localizacao from "@/secoes/Localizacao";
@@ -21,6 +22,7 @@ import Rodape from "@/secoes/Rodape";
 export default function Home() {
   return (
     <div className="lp">
+      <JsonLd />
       <Header />
       <main>
         <HeroPainel />
