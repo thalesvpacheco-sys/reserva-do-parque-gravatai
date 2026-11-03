@@ -14,6 +14,7 @@ export default function TeaserHero() {
           <Rico texto={hero.titulo} />
         </h1>
         <p>{hero.texto}</p>
+        <strong className="tz-chamada">{hero.chamada}</strong>
         <AbrirCadastro texto={hero.cta} cor="verde" />
         <span className="tz-desce" aria-hidden="true">
           {hero.role}

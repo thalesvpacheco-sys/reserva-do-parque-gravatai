@@ -476,9 +476,10 @@ export const teaser = {
     telefone: "Número das outras LPs; confirmar o oficial do teaser",
   },
   hero: {
-    titulo: "A Nova Harmonia está chegando com **um grande projeto** para Gravataí, Cachoeirinha e Canoas.",
-    texto: "Um projeto para transformar a região e trazer um padrão de qualidade totalmente novo.",
-    cta: "Saiba mais informações em primeira mão!",
+    titulo: "A Nova Harmonia apresenta um novo conceito de bairro planejado em **Gravataí, Cachoeirinha e Canoas!**",
+    texto: "Um empreendimento para transformar a cidade e trazer um padrão de qualidade totalmente novo.",
+    chamada: "Saiba mais informações em primeira mão!",
+    cta: "Quero me cadastrar!",
     role: "Role",
   },
   zoom: {

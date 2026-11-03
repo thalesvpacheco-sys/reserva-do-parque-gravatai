@@ -34,6 +34,7 @@
 .tz-hero h1 { max-width: 20ch; color: var(--verde-escuro); font-size: clamp(2.2rem, 5vw, 4.8rem); }
 .tz-hero h1 strong { color: var(--verde); font-weight: inherit; }
 .tz-hero p { margin-inline: auto; color: var(--tinta-suave); }
+.tz-chamada { max-width: 24ch; margin-top: 6px; color: var(--verde-escuro); font-size: clamp(1.3rem, 2.4vw, 2rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.15; text-wrap: balance; }
 .tz-desce { display: grid; justify-items: center; gap: 8px; margin-top: 12px; color: var(--verde); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
 .tz-desce i { width: 1px; height: 44px; background: linear-gradient(var(--verde), transparent); transform-origin: top; animation: tz-desce 1.8s ease-in-out infinite; }
 @keyframes tz-desce { 0% { transform: scaleY(0); } 60% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
