@@ -461,7 +461,7 @@ const teaserObra = (nome: string, local: string, arquivo: string, largura = 1600
 });
 
 export const teaser = {
-  /* no zip a página vai para novaharmonia.com.br/teaser/ (scripts/zip-teaser.mjs); o basePath já entra no canonical */
+  /* no zip a página vai para novaharmonia.com.br/teaser-cliente/ (scripts/zip-teaser.mjs); o basePath já entra no canonical */
   url: `${base}/`,
   dominio: "https://novaharmonia.com.br",
   seo: {

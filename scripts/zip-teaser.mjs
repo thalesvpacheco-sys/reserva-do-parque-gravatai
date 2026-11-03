@@ -1,12 +1,12 @@
 /*
- * Monta o zip do teaser para subir na hospedagem do subdomínio (novaharmonia.com.br/teaser).
+ * Monta o zip do teaser para subir na hospedagem do subdomínio (novaharmonia.com.br/teaser-cliente).
  * Uso: npm run teaser:zip   (roda o build, copia o HTML pronto e os arquivos estáticos para
  * teaser-site/ e gera teaser-site.zip, com index.html na raiz do zip).
  */
 import { execSync } from "node:child_process";
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync } from "node:fs";
 
-const base = "/teaser";
+const base = "/teaser-cliente";
 const saida = "teaser-site";
 const zip = "teaser-site.zip";
 

@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-/* o zip do teaser (scripts/zip-teaser.mjs) é gerado com NEXT_PUBLIC_BASE_PATH=/teaser */
+/* o zip do teaser (scripts/zip-teaser.mjs) é gerado com NEXT_PUBLIC_BASE_PATH=/teaser-cliente */
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || undefined;
 
 const nextConfig: NextConfig = {
