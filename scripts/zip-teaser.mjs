@@ -38,7 +38,7 @@ cpSync("src/app/icon.svg", `${saida}/icon.svg`);
 
 /* confere se toda referência local do HTML existe no pacote */
 const pagina = readFileSync(`${saida}/index.html`, "utf8");
-const faltando = [...new Set([...pagina.matchAll(/(?:src|href)="(\/(?:_next|img)\/[^"?#]+)/g)].map((m) => m[1]))].filter(
+const faltando = [...new Set([...pagina.matchAll(/(?:src|href)="(\/teaser\/(?:_next|img)\/[^"?#]+)/g)].map((m) => m[1]))].filter(
   (c) => !existsSync(saida + decodeURIComponent(c).slice(base.length)),
 );
 if (faltando.length) throw new Error(`Arquivos referenciados e ausentes no pacote:\n${faltando.join("\n")}`);
