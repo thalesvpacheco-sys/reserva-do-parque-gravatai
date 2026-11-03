@@ -559,16 +559,15 @@ export const teaser = {
   familia: {
     imagem: { src: teaserImg("familia"), largura: 1440, altura: 600, alt: "Família feliz em frente a casa em construção" },
     titulo: "Receba informações sobre o próximo grande empreendimento da Nova Harmonia!",
-    cta: "Quero me cadastrar!",
   },
   cadastro: {
     rotulo: "Acesso exclusivo",
+    titulo: "Quero me cadastrar!",
     nome: { rotulo: "Nome", placeholder: "Seu nome completo" },
     telefone: { rotulo: "WhatsApp", placeholder: "(00) 00000-0000" },
     cidade: { rotulo: "Cidade", opcoes: ["Gravataí", "Cachoeirinha", "Canoas", "Outra"] },
     email: { rotulo: "E-mail", placeholder: "voce@email.com" },
     enviar: "Enviar cadastro",
-    fechar: "Fechar",
     okTitulo: "Cadastro recebido.",
     ok: "Você vai receber as novidades antes de todo mundo.",
     aviso: "Versão de aprovação: nenhum dado foi enviado.",

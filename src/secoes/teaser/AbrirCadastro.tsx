@@ -1,16 +1,10 @@
-"use client";
-
 import { ArrowRight } from "lucide-react";
 
-/* o botão só avisa o CadastroTeaser (evento "abrir-cadastro"), com o texto dele como título do diálogo */
+/* os botões rolam até o formulário de cadastro, que fica aberto no fim da página (id="cadastro") */
 export default function AbrirCadastro({ texto, cor }: { texto: string; cor: "verde" | "ipe" }) {
   return (
-    <button
-      className={`tz-bt tz-bt-${cor}`}
-      type="button"
-      onClick={() => dispatchEvent(new CustomEvent("abrir-cadastro", { detail: { titulo: texto } }))}
-    >
+    <a className={`tz-bt tz-bt-${cor}`} href="#cadastro">
       {texto} <ArrowRight aria-hidden="true" />
-    </button>
+    </a>
   );
 }

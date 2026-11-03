@@ -131,13 +131,10 @@
 .tz-rod small { display: block; width: 100%; font-size: 12px; opacity: .7; }
 .tz-rod .tz-legal { max-width: 90ch; margin-inline: auto; font-size: 11px; line-height: 1.5; opacity: .55; }
 
-/* ───────── cadastro (diálogo) ───────── */
-body:has(.tz-cad[open]) { overflow: hidden; }
-.tz-cad { width: min(560px, calc(100% - 32px)); margin: auto; padding: 0; border: 0; border-radius: 4px; background: var(--verde-escuro); color: var(--areia); }
-.tz-cad::backdrop { background: rgba(15, 31, 18, .7); backdrop-filter: blur(4px); }
-.tz-cad-in { display: grid; gap: 18px; padding: clamp(24px, 4vw, 40px); }
-.tz-cad-x { justify-self: end; width: 40px; height: 40px; margin: -8px -8px 0 0; border: 0; background: none; color: var(--areia); font-size: 26px; line-height: 1; cursor: pointer; }
-.tz-cad h2 { color: var(--branco); font-size: 1.6rem; }
+/* ───────── cadastro (formulário aberto na página) ───────── */
+.tz-cad { background: var(--verde-escuro); color: var(--areia); scroll-margin-top: 24px; }
+.tz-cad-in { display: grid; gap: 18px; max-width: 720px; margin-inline: auto; padding: clamp(56px, 8vw, 110px) max(var(--gutter), env(safe-area-inset-left, 0px)); }
+.tz-cad h2 { color: var(--branco); font-size: clamp(1.8rem, 3.4vw, 2.8rem); }
 .tz-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .tz-full { grid-column: 1 / -1; }
 .tz-cad label { display: grid; gap: 6px; font-size: 13px; font-weight: 500; }

@@ -47,9 +47,9 @@ export default function TeaserAprovacao() {
         <TeaserConstruimos />
         <TeaserHistoria />
         <TeaserFamilia />
+        <CadastroTeaser />
       </main>
       <TeaserRodape />
-      <CadastroTeaser />
     </div>
   );
 }

@@ -1,30 +1,18 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { cadastro as cadastroLP, empreendimento, teaser } from "@/dados";
 import { aoDigitarTelefone } from "../util";
 
 /*
- * Diálogo de cadastro do teaser. Abre por "abrir-cadastro" (ver AbrirCadastro).
+ * Formulário de cadastro do teaser, aberto na página (o RD Station não enxerga popup).
  * Versão de aprovação: valida como o formulário da LP, mas não envia nada.
- * Para ligar de verdade, poste em /api/lead/ como o LeadForm (e crie um cf_empreendimento próprio).
+ * Para ligar de verdade, poste em /api/lead/ como o LeadForm ou troque pelo formulário do RD.
  */
 export default function CadastroTeaser() {
   const { cadastro } = teaser;
   const { aceite } = cadastroLP.form;
-  const dlg = useRef<HTMLDialogElement>(null);
-  const [titulo, setTitulo] = useState(teaser.hero.cta);
   const [enviado, setEnviado] = useState(false);
-
-  useEffect(() => {
-    const abrir = (e: Event) => {
-      setTitulo((e as CustomEvent<{ titulo: string }>).detail.titulo);
-      setEnviado(false);
-      dlg.current?.showModal();
-    };
-    addEventListener("abrir-cadastro", abrir);
-    return () => removeEventListener("abrir-cadastro", abrir);
-  }, []);
 
   const submeter = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,20 +25,10 @@ export default function CadastroTeaser() {
   };
 
   return (
-    <dialog
-      className="tz-cad"
-      ref={dlg}
-      aria-labelledby="tz-cad-t"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) dlg.current?.close();
-      }}
-    >
+    <section className="tz-cad" id="cadastro" aria-labelledby="tz-cad-t">
       <div className="tz-cad-in">
-        <button className="tz-cad-x" type="button" aria-label={cadastro.fechar} onClick={() => dlg.current?.close()}>
-          ×
-        </button>
         <span className="tz-rot tz-rot-ipe">{cadastro.rotulo}</span>
-        <h2 id="tz-cad-t">{titulo}</h2>
+        <h2 id="tz-cad-t">{cadastro.titulo}</h2>
         <form className="tz-form" noValidate hidden={enviado} onSubmit={submeter}>
           <label className="tz-full" htmlFor="tz-nome">
             {cadastro.nome.rotulo}
@@ -101,6 +79,6 @@ export default function CadastroTeaser() {
           {cadastro.ok} ({cadastro.aviso})
         </p>
       </div>
-    </dialog>
+    </section>
   );
 }
