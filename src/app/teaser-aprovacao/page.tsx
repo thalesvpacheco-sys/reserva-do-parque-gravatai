@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import { teaser } from "@/dados";
 import CadastroTeaser from "@/secoes/teaser/CadastroTeaser";
 import TeaserFamilia from "@/secoes/teaser/TeaserFamilia";
-import TeaserConstruimos from "@/secoes/teaser/TeaserConstruimos";
 import TeaserHero from "@/secoes/teaser/TeaserHero";
 import TeaserHistoria from "@/secoes/teaser/TeaserHistoria";
 import TeaserInfra from "@/secoes/teaser/TeaserInfra";
@@ -42,7 +41,6 @@ export default function TeaserAprovacao() {
         <TeaserZoom />
         <TeaserSolidez />
         <TeaserInfra />
-        <TeaserConstruimos />
         <TeaserHistoria />
         <TeaserFamilia />
         <CadastroTeaser />

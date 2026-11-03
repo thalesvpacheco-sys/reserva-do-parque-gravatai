@@ -513,18 +513,6 @@ export const teaser = {
     texto: "Uma infraestrutura com alta qualidade construtiva é a marca reconhecida da qualidade Nova Harmonia!",
     cta: "Saiba mais",
   },
-  construimos: {
-    id: "como-construimos",
-    rotulo: "Como construímos",
-    titulo: "Infraestrutura à altura do padrão **Nova Harmonia** de qualidade",
-    /* provisória (praça do Reserva do Parque): trocar pela foto que o cliente indicar */
-    imagem: {
-      src: teaserImg("infraestrutura"),
-      largura: 1600,
-      altura: 900,
-      alt: "Calçadas, ciclovia, playground e iluminação em um bairro planejado da Nova Harmonia",
-    },
-  },
   historia: {
     rotulo: "Uma grande história",
     titulo: "Com a nobre missão de urbanizar com harmonia",
