@@ -75,27 +75,6 @@
 .tz-nums strong { color: var(--verde-escuro); font-size: clamp(4.4rem, 11vw, 10rem); font-weight: 800; letter-spacing: -.07em; line-height: .82; font-variant-numeric: tabular-nums; }
 .tz-nums > div > span { max-width: 24ch; color: var(--tinta-suave); font-size: 15px; }
 
-/* ───────── obras pelo Brasil ───────── */
-.tz-obras { overflow: hidden; background: var(--noite); color: var(--areia); }
-.tz-obras-cab { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 24px; padding-top: clamp(64px, 9vw, 120px); }
-.tz-obras h2 { max-width: 20ch; margin-top: 14px; color: var(--branco); font-size: clamp(1.8rem, 3.4vw, 3rem); }
-.tz-setas { display: flex; gap: 8px; }
-.tz-setas button { display: grid; place-items: center; width: 52px; height: 52px; border: 1px solid rgba(215, 203, 174, .4); border-radius: 50%; background: none; color: var(--areia); cursor: pointer; transition: background-color .2s, color .2s, border-color .2s, opacity .2s; }
-.tz-setas button:hover:not(:disabled) { border-color: var(--ipe); background: var(--ipe); color: var(--verde-escuro); }
-.tz-setas button:disabled { opacity: .35; cursor: default; }
-.tz-setas svg { width: 20px; height: 20px; }
-.tz-fila { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 40px max(var(--gutter), env(safe-area-inset-right, 0px)) clamp(64px, 9vw, 120px) max(var(--gutter), env(safe-area-inset-left, 0px)); scroll-padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); }
-.tz-fila::-webkit-scrollbar { display: none; }
-.tz-fila figure { display: grid; flex: 0 0 clamp(280px, 38vw, 560px); gap: 14px; margin: 0; scroll-snap-align: start; }
-.tz-img { aspect-ratio: 4 / 3; overflow: hidden; }
-.tz-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
-.tz-fila figure:hover .tz-img img { transform: scale(1.06); }
-.tz-fila figcaption { display: flex; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(215, 203, 174, .25); }
-.tz-fila figcaption b { color: var(--branco); font-size: 18px; font-weight: 600; }
-.tz-fila figcaption span { align-self: center; color: var(--ipe); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
-.tz-breve .tz-img { display: grid; align-content: end; gap: 8px; padding: 28px; background: var(--ipe); color: var(--verde-escuro); }
-.tz-breve strong { font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1.02; letter-spacing: -.03em; }
-
 /* ───────── infraestrutura: frase de ligação ───────── */
 .tz-infra { background: var(--areia-clara); }
 .tz-infra .tz-wrap { display: grid; justify-items: start; gap: 28px; padding-block: clamp(64px, 9vw, 120px); }

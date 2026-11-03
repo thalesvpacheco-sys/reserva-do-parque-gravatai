@@ -451,15 +451,6 @@ export const rodape = {
 /* o <img> não recebe o basePath sozinho: no zip do teaser as imagens ficam em /teaser/img/ */
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const teaserImg = (nome: string) => `${base}/img/teaser/${nome}.webp`;
-const teaserObra = (nome: string, local: string, arquivo: string, largura = 1600, altura = 900) => ({
-  src: teaserImg(arquivo),
-  largura,
-  altura,
-  nome,
-  local,
-  alt: `${nome}, ${local}`,
-});
-
 export const teaser = {
   /* no zip a página vai para novaharmonia.com.br/teaser-cliente/ (scripts/zip-teaser.mjs); o basePath já entra no canonical */
   url: `${base}/`,
@@ -517,21 +508,6 @@ export const teaser = {
       { v: 11, rotulo: "estados", confirmar: true },
       { v: 5, rotulo: "regiões do Brasil", confirmar: false },
     ],
-  },
-  obras: {
-    rotulo: "Tal como já fizemos",
-    titulo: "Em Viamão e em diversos estados brasileiros.",
-    rotuloLista: "Obras da Nova Harmonia pelo Brasil",
-    ant: "Obra anterior",
-    prox: "Próxima obra",
-    itens: [
-      teaserObra("Parque Harmonia", "Viamão · RS", "viamao-por-do-sol", 1918, 1080),
-      teaserObra("Reserva dos Babaçus", "Teresina · PI", "teresina-parque", 1919, 1080),
-      teaserObra("The One", "Maranhão", "maranhao-portico"),
-      teaserObra("Reserva dos Babaçus", "Teresina · PI", "teresina-portico", 1919, 1080),
-      teaserObra("The One", "Maranhão", "maranhao-praca"),
-    ],
-    breve: { rotulo: "Muito em breve", titulo: "Gravataí, Cachoeirinha e Canoas" },
   },
   infra: {
     texto: "Uma infraestrutura com alta qualidade construtiva é a marca reconhecida da qualidade Nova Harmonia!",

@@ -7,7 +7,6 @@ import TeaserConstruimos from "@/secoes/teaser/TeaserConstruimos";
 import TeaserHero from "@/secoes/teaser/TeaserHero";
 import TeaserHistoria from "@/secoes/teaser/TeaserHistoria";
 import TeaserInfra from "@/secoes/teaser/TeaserInfra";
-import TeaserObras from "@/secoes/teaser/TeaserObras";
 import TeaserRodape from "@/secoes/teaser/TeaserRodape";
 import TeaserSolidez from "@/secoes/teaser/TeaserSolidez";
 import TeaserZoom from "@/secoes/teaser/TeaserZoom";
@@ -42,7 +41,6 @@ export default function TeaserAprovacao() {
         <TeaserHero />
         <TeaserZoom />
         <TeaserSolidez />
-        <TeaserObras />
         <TeaserInfra />
         <TeaserConstruimos />
         <TeaserHistoria />
