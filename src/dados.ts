@@ -467,7 +467,7 @@ export const teaser = {
   seo: {
     titulo: "Nova Harmonia | Novidades para Gravataí, Cachoeirinha e Canoas",
     descricao:
-      "A Nova Harmonia apresenta um novo conceito de bairro planejado em Gravataí, Cachoeirinha e Canoas. Cadastre-se e saiba mais informações em primeira mão.",
+      "A Nova Harmonia apresenta um novo conceito de viver bem em Gravataí, Cachoeirinha e Canoas. Cadastre-se e saiba mais informações em primeira mão.",
     og: { imagem: teaserImg("viamao-por-do-sol"), largura: 1918, altura: 1080, alt: "Pôr do sol no Parque Harmonia, em Viamão" },
   },
   logo: { src: `${base}/img/logo/logo-nova-harmonia.svg`, alt: "Nova Harmonia", largura: 266, altura: 157 },
@@ -476,8 +476,8 @@ export const teaser = {
     telefone: "Número das outras LPs; confirmar o oficial do teaser",
   },
   hero: {
-    titulo: "A Nova Harmonia apresenta um novo conceito de bairro planejado em **Gravataí, Cachoeirinha e Canoas!**",
-    texto: "Um empreendimento para transformar a cidade e trazer um padrão de qualidade totalmente novo.",
+    titulo: "A Nova Harmonia apresenta um novo conceito de viver bem em **Gravataí, Cachoeirinha e Canoas!**",
+    texto: "Empreendimentos para transformar a cidade e trazer um padrão de qualidade totalmente novo.",
     chamada: "Saiba mais informações em primeira mão!",
     cta: "Quero me cadastrar!",
     role: "Role",
