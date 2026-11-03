@@ -43,5 +43,5 @@ const faltando = [...new Set([...pagina.matchAll(/(?:src|href)="(\/teaser\/(?:_n
 );
 if (faltando.length) throw new Error(`Arquivos referenciados e ausentes no pacote:\n${faltando.join("\n")}`);
 
-execSync(`tar -a -cf ${zip} -C ${saida} .`, { stdio: "inherit" });
+execSync(`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/zip.ps1 ${saida} ${zip}`, { stdio: "inherit" });
 console.log(`\nPronto: ${zip}`);
