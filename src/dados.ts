@@ -459,7 +459,9 @@ const teaserObra = (nome: string, local: string, arquivo: string, largura = 1600
 });
 
 export const teaser = {
-  url: "/teaser-aprovacao/",
+  /* no zip do subdomínio a página vira a raiz (scripts/zip-teaser.mjs) */
+  url: "/",
+  dominio: "https://teaser.novaharmonia.com.br",
   seo: {
     titulo: "Nova Harmonia | Novidades para Gravataí, Cachoeirinha e Canoas",
     descricao:
@@ -472,10 +474,9 @@ export const teaser = {
     telefone: "Número das outras LPs; confirmar o oficial do teaser",
   },
   hero: {
-    titulo: "A Nova Harmonia está preparando **algo grande** para a região de Gravataí, Cachoeirinha e Canoas.",
-    texto:
-      "Muito em breve teremos novidades que farão a diferença na vida de muitas pessoas, tal como já fizemos em Viamão e em diversos estados brasileiros.",
-    cta: "Cadastre-se para ter acesso exclusivo às novidades antes de todo mundo.",
+    titulo: "A Nova Harmonia está chegando com **um grande projeto** para Gravataí, Cachoeirinha e Canoas.",
+    texto: "Um projeto para transformar a região e trazer um padrão de qualidade totalmente novo.",
+    cta: "Saiba mais informações em primeira mão!",
     role: "Role",
   },
   zoom: {
@@ -505,8 +506,10 @@ export const teaser = {
       depois: ", nas 5 regiões do Brasil, a Nova Harmonia traz desenvolvimento urbano com o compromisso de entregar sempre um elevado padrão de qualidade.",
     },
     texto2:
-      "Viamão é um excelente exemplo de como trabalhamos e agora está chegando o momento de fazer tudo isso para que sua família possa viver ainda melhor com a visão de futuro que está chegando para Gravataí, Cachoeirinha e Canoas.",
-    cta: "Quero saber de tudo em primeira-mão.",
+      "Prova disso são os bairros planejados e condomínios feitos por nós em Viamão, como Parque Harmonia, que agora tornaram-se vetor de crescimento na cidade.",
+    texto3:
+      "Está chegando o momento de fazer tudo isso em Gravataí, Cachoeirinha e Canoas, para que sua família possa viver ainda melhor com a visão de futuro que está chegando para a região.",
+    cta: "Quero me cadastrar!",
     numeros: [
       { v: 11, rotulo: "estados", confirmar: true },
       { v: 5, rotulo: "regiões do Brasil", confirmar: false },
@@ -527,10 +530,34 @@ export const teaser = {
     ],
     breve: { rotulo: "Muito em breve", titulo: "Gravataí, Cachoeirinha e Canoas" },
   },
+  infra: {
+    texto: "Uma infraestrutura com alta qualidade construtiva é a marca reconhecida da qualidade Nova Harmonia!",
+    cta: "Saiba mais",
+  },
+  construimos: {
+    id: "como-construimos",
+    rotulo: "Como construímos",
+    titulo: "Infraestrutura à altura do padrão **Nova Harmonia** de qualidade",
+    /* provisória (praça do Reserva do Parque): trocar pela foto que o cliente indicar */
+    imagem: {
+      src: teaserImg("infraestrutura"),
+      largura: 1600,
+      altura: 900,
+      alt: "Calçadas, ciclovia, playground e iluminação em um bairro planejado da Nova Harmonia",
+    },
+  },
+  historia: {
+    rotulo: "Uma grande história",
+    titulo: "Com a nobre missão de urbanizar com harmonia",
+    textos: [
+      "Planejamos e executamos projetos urbanísticos únicos, contribuindo com melhorias urbanas nas cidades onde chegamos.",
+      "Elevamos padrões construtivos e realizamos sonhos criando soluções sustentáveis que proporcionam mais qualidade de vida para quem escolhe nossos empreendimentos como LAR.",
+    ],
+  },
   familia: {
     imagem: { src: teaserImg("familia"), largura: 1440, altura: 600, alt: "Família feliz em frente a casa em construção" },
-    titulo: "Conheça o nível de atuação da Nova Harmonia pelo Brasil e prepare-se para dar um importante passo em sua vida.",
-    cta: "Tenho interesse em receber mais informações!",
+    titulo: "Receba informações sobre o próximo grande empreendimento da Nova Harmonia!",
+    cta: "Quero me cadastrar!",
   },
   cadastro: {
     rotulo: "Acesso exclusivo",
@@ -547,6 +574,8 @@ export const teaser = {
   rodape: {
     telefone: "(51) 99719-6426",
     site: "novaharmonia.com.br",
-    copyright: "© 2026 Nova Harmonia · Imagens ilustrativas",
+    copyright: "© 2026 Nova Harmonia. Todos os direitos reservados.",
+    legal:
+      "Este site e todo o seu conteúdo, incluindo textos, imagens, logotipos, gráficos, documentos e demais materiais, são de propriedade exclusiva da Nova Harmonia, sendo protegidos pelas leis de direitos autorais e propriedade intelectual. É proibida a reprodução, distribuição ou alteração dos conteúdos sem autorização prévia e expressa dos responsáveis legais.",
   },
 };

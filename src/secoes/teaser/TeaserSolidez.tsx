@@ -19,6 +19,7 @@ export default function TeaserSolidez() {
               {texto1.depois}
             </p>
             <p>{solidez.texto2}</p>
+            <p>{solidez.texto3}</p>
             <AbrirCadastro texto={solidez.cta} cor="verde" />
           </div>
         </div>

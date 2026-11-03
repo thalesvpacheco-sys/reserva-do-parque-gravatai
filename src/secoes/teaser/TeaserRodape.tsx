@@ -16,6 +16,7 @@ export default function TeaserRodape() {
           </a>
         </p>
         <small>{rodape.copyright}</small>
+        <small className="tz-legal">{rodape.legal}</small>
       </div>
     </footer>
   );

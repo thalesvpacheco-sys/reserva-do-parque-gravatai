@@ -95,6 +95,24 @@
 .tz-breve .tz-img { display: grid; align-content: end; gap: 8px; padding: 28px; background: var(--ipe); color: var(--verde-escuro); }
 .tz-breve strong { font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1.02; letter-spacing: -.03em; }
 
+/* ───────── infraestrutura: frase de ligação ───────── */
+.tz-infra { background: var(--areia-clara); }
+.tz-infra .tz-wrap { display: grid; justify-items: start; gap: 28px; padding-block: clamp(64px, 9vw, 120px); }
+.tz-infra p { max-width: 26ch; color: var(--verde-escuro); font-size: clamp(1.6rem, 3.4vw, 3rem); font-weight: 600; letter-spacing: -.03em; line-height: 1.1; text-wrap: balance; }
+
+/* ───────── como construímos ───────── */
+.tz-cons { background: var(--verde-escuro); color: var(--areia); }
+.tz-cons .tz-wrap { display: grid; gap: 14px; padding-block: clamp(72px, 10vw, 140px); }
+.tz-cons h2 { max-width: 20ch; color: #f3eee1; font-size: clamp(2rem, 4.4vw, 4rem); }
+.tz-cons h2 strong { color: var(--ipe); font-weight: inherit; }
+.tz-cons img { width: 100%; height: auto; margin-top: clamp(18px, 3vw, 36px); border-radius: 4px; }
+
+/* ───────── uma grande história ───────── */
+.tz-hist { background: var(--papel); }
+.tz-hist .tz-wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 6vw, 96px); align-items: start; padding-block: clamp(72px, 10vw, 140px); }
+.tz-hist h2 { margin-top: 14px; color: var(--verde-escuro); font-size: clamp(2rem, 4.2vw, 3.8rem); }
+.tz-hist-txt { display: grid; gap: 18px; color: var(--tinta-suave); }
+
 /* ───────── família ───────── */
 .tz-fam { position: relative; background: var(--noite); color: var(--branco); }
 .tz-fam img { width: 100%; height: clamp(420px, 48vw, 680px); object-fit: cover; object-position: 50% 40%; }
@@ -111,6 +129,7 @@
 .tz-rod a:hover { text-decoration: underline; }
 .tz-rod i { width: 5px; height: 5px; border-radius: 50%; background: var(--ipe); }
 .tz-rod small { display: block; width: 100%; font-size: 12px; opacity: .7; }
+.tz-rod .tz-legal { max-width: 90ch; margin-inline: auto; font-size: 11px; line-height: 1.5; opacity: .55; }
 
 /* ───────── cadastro (diálogo) ───────── */
 body:has(.tz-cad[open]) { overflow: hidden; }
@@ -131,7 +150,7 @@ body:has(.tz-cad[open]) { overflow: hidden; }
 
 /* ───────── responsivo e movimento ───────── */
 @media (max-width: 900px) {
-  .tz-sol-cab, .tz-nums { grid-template-columns: 1fr; }
+  .tz-sol-cab, .tz-nums, .tz-hist .tz-wrap { grid-template-columns: 1fr; }
   .tz-nums > div + div { margin-top: 24px; padding-left: 0; border-left: 0; border-top: 1px solid var(--linha-escura); }
   .tz-fam .tz-wrap { position: static; background: var(--noite); }
   .tz-fam::after { display: none; }
