@@ -448,7 +448,9 @@ export const rodape = {
  * Página de aprovação: o cadastro dela não envia dados. "confirmar" marca o que ainda
  * precisa de resposta do cliente e aparece com o tracejado .tz-pend.
  */
-const teaserImg = (nome: string) => `/img/teaser/${nome}.webp`;
+/* o <img> não recebe o basePath sozinho: no zip do teaser as imagens ficam em /teaser/img/ */
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const teaserImg = (nome: string) => `${base}/img/teaser/${nome}.webp`;
 const teaserObra = (nome: string, local: string, arquivo: string, largura = 1600, altura = 900) => ({
   src: teaserImg(arquivo),
   largura,
@@ -459,16 +461,16 @@ const teaserObra = (nome: string, local: string, arquivo: string, largura = 1600
 });
 
 export const teaser = {
-  /* no zip do subdomínio a página vira a raiz (scripts/zip-teaser.mjs) */
-  url: "/",
-  dominio: "https://teaser.novaharmonia.com.br",
+  /* no zip a página vai para novaharmonia.com.br/teaser/ (scripts/zip-teaser.mjs); o basePath já entra no canonical */
+  url: `${base}/`,
+  dominio: "https://novaharmonia.com.br",
   seo: {
     titulo: "Nova Harmonia | Novidades para Gravataí, Cachoeirinha e Canoas",
     descricao:
       "A Nova Harmonia está preparando algo grande para a região de Gravataí, Cachoeirinha e Canoas. Cadastre-se e receba as novidades antes de todo mundo.",
     og: { imagem: teaserImg("viamao-por-do-sol"), largura: 1918, altura: 1080, alt: "Pôr do sol no Parque Harmonia, em Viamão" },
   },
-  logo: { src: "/img/logo/logo-nova-harmonia.svg", alt: "Nova Harmonia", largura: 266, altura: 157 },
+  logo: { src: `${base}/img/logo/logo-nova-harmonia.svg`, alt: "Nova Harmonia", largura: 266, altura: 157 },
   confirmar: {
     estados: "Thayná, por favor confirmar esse número",
     telefone: "Número das outras LPs; confirmar o oficial do teaser",
