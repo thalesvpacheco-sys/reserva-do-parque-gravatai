@@ -3,7 +3,7 @@ import { urlSite } from "@/secoes/util";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/teaser-aprovacao/"] },
+    rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/teaser-aprovacao/", "/teaser-corretor/"] },
     sitemap: `${urlSite}/sitemap.xml`,
   };
 }

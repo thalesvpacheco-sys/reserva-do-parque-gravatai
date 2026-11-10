@@ -7,7 +7,8 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "teaser:zip": "node scripts/zip-teaser.mjs"
+    "teaser:zip": "node scripts/zip-teaser.mjs",
+    "corretor:zip": "node scripts/zip-teaser.mjs corretor"
   },
   "dependencies": {
     "lucide-react": "0.469.0",

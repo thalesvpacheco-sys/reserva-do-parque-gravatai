@@ -31,5 +31,6 @@ As perspectivas e fotos são do Morada dos Pássaros e servem só de referência
 | `outros/` | `outros-*.webp` | cards dos outros empreendimentos |
 | `og/` | `og.jpg` | compartilhamento (Open Graph e Twitter) |
 | `teaser/` | `mapa-brasil`, `viamao-aerea`, `viamao-eu-viamao`, `viamao-por-do-sol`, `teresina-*`, `maranhao-*`, `familia` | teaser `/teaser-aprovacao/` (mapa do zoom, obras e foto da família). Imagens reais do cliente |
+| `teaser-corretor/` | `stand`, `sol`, `teresina-babacus`, `caruaru-ponte`, `paco-lumiar-rotatoria` | teaser `/teaser-corretor/`. Fotos reais do cliente (mosaico: Viamão, Teresina, Caruaru e Paço do Lumiar); `stand` no bloco de vendas é provisória |
 
 O brief previa uma pasta `banners/`. O hero e as faixas de largura total usam os mesmos arquivos da galeria, então eles ficaram só em `carrosseis/` para não duplicar.

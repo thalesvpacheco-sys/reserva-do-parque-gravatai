@@ -1,16 +1,23 @@
 /*
- * Monta o zip do teaser para subir na hospedagem do subdomínio (novaharmonia.com.br/teaser-cliente).
- * Uso: npm run teaser:zip   (roda o build, copia o HTML pronto e os arquivos estáticos para
- * teaser-site/ e gera teaser-site.zip, com index.html na raiz do zip).
+ * Monta o zip de um teaser para subir numa pasta da hospedagem do WordPress.
+ * Uso: npm run teaser:zip    (clientes,   novaharmonia.com.br/teaser-cliente/)
+ *      npm run corretor:zip  (corretores, novaharmonia.com.br/teaser-corretor/)
+ * Roda o build, copia o HTML pronto e os arquivos estáticos para a pasta de saída e gera o zip,
+ * com index.html na raiz do zip. O zip deve ser extraído DENTRO da pasta de mesmo nome da base.
  */
 import { execSync } from "node:child_process";
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync } from "node:fs";
 
-const base = "/teaser-cliente";
-const saida = "teaser-site";
-const zip = "teaser-site.zip";
+const teasers = {
+  cliente: { base: "/teaser-cliente", rota: "teaser-aprovacao", saida: "teaser-site", imagens: "teaser", logo: "logo-nova-harmonia.svg" },
+  corretor: { base: "/teaser-corretor", rota: "teaser-corretor", saida: "teaser-corretor-site", imagens: "teaser-corretor", logo: "logo-nova-harmonia-simples.svg" },
+};
 
-const html = ".next/server/app/teaser-aprovacao.html";
+const { base, rota, saida, imagens, logo } = teasers[process.argv[2] ?? "cliente"] ?? {};
+if (!base) throw new Error(`Teaser desconhecido. Use: ${Object.keys(teasers).join(" ou ")}`);
+const zip = `${saida}.zip`;
+
+const html = `.next/server/app/${rota}.html`;
 rmSync(html, { force: true });
 
 /*
@@ -31,16 +38,16 @@ mkdirSync(saida);
 
 cpSync(html, `${saida}/index.html`);
 cpSync(".next/static", `${saida}/_next/static`, { recursive: true });
-cpSync("public/img/teaser", `${saida}/img/teaser`, { recursive: true });
-cpSync("public/img/logo/logo-nova-harmonia.svg", `${saida}/img/logo/logo-nova-harmonia.svg`);
+cpSync(`public/img/${imagens}`, `${saida}/img/${imagens}`, { recursive: true });
+cpSync(`public/img/logo/${logo}`, `${saida}/img/logo/${logo}`);
 cpSync("src/app/icon.svg", `${saida}/icon.svg`);
 /* o Next gera o ícone em /icon.svg?hash; aqui ele é um arquivo estático comum */
 
 /* confere se toda referência local do HTML existe no pacote */
 const pagina = readFileSync(`${saida}/index.html`, "utf8");
-const faltando = [...new Set([...pagina.matchAll(/(?:src|href)="(\/teaser\/(?:_next|img)\/[^"?#]+)/g)].map((m) => m[1]))].filter(
-  (c) => !existsSync(saida + decodeURIComponent(c).slice(base.length)),
-);
+const referencias = [...pagina.matchAll(new RegExp(`(?:src|href)="(${base}/(?:_next|img)/[^"?#]+)`, "g"))].map((m) => m[1]);
+if (!referencias.length) throw new Error(`Nenhuma referência a ${base}/ no HTML. O basePath foi aplicado?`);
+const faltando = [...new Set(referencias)].filter((c) => !existsSync(saida + decodeURIComponent(c).slice(base.length)));
 if (faltando.length) throw new Error(`Arquivos referenciados e ausentes no pacote:\n${faltando.join("\n")}`);
 
 execSync(`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/zip.ps1 ${saida} ${zip}`, { stdio: "inherit" });
