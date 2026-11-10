@@ -638,6 +638,16 @@ export const teaserCorretor = {
     okTitulo: "Cadastro recebido.",
     ok: "Você terá acesso prioritário às oportunidades.",
   },
+  /* página de confirmação, em /teaser-corretor/obrigado/ (a mesma que já estava no ar na Hostinger) */
+  obrigado: {
+    titulo: "Cadastro recebido | Nova Harmonia",
+    rotulo: "Cadastro recebido",
+    h1: "Obrigado! Seu acesso prioritário está garantido.",
+    texto:
+      "Você terá acesso prioritário às oportunidades de negócios da Nova Harmonia em Gravataí, Cachoeirinha e Canoas. Em breve, nossa equipe entra em contato pelo WhatsApp que você informou.",
+    cta: { rotulo: "Conheça a Nova Harmonia", href: "https://novaharmonia.com.br" },
+    voltar: "Voltar para a página",
+  },
   rodape: {
     copyright: teaser.rodape.copyright,
     legal: teaser.rodape.legal,

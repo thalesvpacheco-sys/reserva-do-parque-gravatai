@@ -99,3 +99,20 @@
 @media (max-width: 520px) {
   .tc-perfis { grid-template-columns: 1fr; }
 }
+
+/* página de confirmação (/teaser-corretor/obrigado/) */
+.tz-obg { position: relative; display: grid; align-items: center; min-height: 100svh; background: var(--areia-clara); }
+.tz-obg .tz-wrap { display: grid; justify-items: center; gap: 22px; width: 100%; padding-block: 56px 72px; text-align: center; }
+.tz-obg-logo { width: auto; height: clamp(64px, 7vw, 92px); margin-bottom: 12px; }
+.tz-obg h1 { max-width: 18ch; color: var(--verde-escuro); font-size: clamp(2.2rem, 5vw, 4.4rem); }
+.tz-obg p { margin-inline: auto; color: var(--tinta-suave); }
+.tz-obg-ok { position: relative; display: grid; place-items: center; width: 72px; height: 72px; border-radius: 50%; background: var(--ipe); color: var(--verde-escuro); }
+.tz-obg-ok::after { content: ""; position: absolute; inset: 0; border: 2px solid var(--ipe); border-radius: 50%; animation: tz-obg-onda 2.6s ease-out infinite; }
+.tz-obg-ok svg { width: 34px; height: 34px; }
+@keyframes tz-obg-onda { from { transform: scale(1); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
+.tz-obg-bts { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 28px; margin-top: 8px; }
+.tz-obg-volta { display: inline-flex; align-items: center; gap: 8px; color: var(--verde-escuro); font-size: 15px; font-weight: 600; text-decoration: none; }
+.tz-obg-volta:hover { text-decoration: underline; }
+.tz-obg-volta svg { width: 16px; height: 16px; }
+.tz-obg-volta:focus-visible { outline: 2px solid var(--ipe); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .tz-obg-ok::after { animation: none; } }

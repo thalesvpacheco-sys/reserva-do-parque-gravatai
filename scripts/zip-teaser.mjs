@@ -10,15 +10,18 @@ import { cpSync, existsSync, mkdirSync, readFileSync, rmSync } from "node:fs";
 
 const teasers = {
   cliente: { base: "/teaser-cliente", rota: "teaser-aprovacao", saida: "teaser-site", imagens: "teaser", logo: "logo-nova-harmonia.svg" },
-  corretor: { base: "/teaser-corretor", rota: "teaser-corretor", saida: "teaser-corretor-site", imagens: "teaser-corretor", logo: "logo-nova-harmonia-simples.svg" },
+  corretor: { base: "/teaser-corretor", rota: "teaser-corretor", saida: "teaser-corretor-site", imagens: "teaser-corretor", logo: "logo-nova-harmonia-simples.svg", obrigado: true },
 };
 
-const { base, rota, saida, imagens, logo } = teasers[process.argv[2] ?? "cliente"] ?? {};
+const { base, rota, saida, imagens, logo, obrigado } = teasers[process.argv[2] ?? "cliente"] ?? {};
 if (!base) throw new Error(`Teaser desconhecido. Use: ${Object.keys(teasers).join(" ou ")}`);
 const zip = `${saida}.zip`;
 
 const html = `.next/server/app/${rota}.html`;
+/* página de confirmação (só o teaser dos corretores): vai em obrigado/index.html */
+const htmlObrigado = `.next/server/app/${rota}/obrigado.html`;
 rmSync(html, { force: true });
+rmSync(htmlObrigado, { force: true });
 
 /*
  * O Next 16.4.0 sai com código 1 ao final do build por causa do aviso de vulnerabilidade
@@ -28,7 +31,7 @@ rmSync(html, { force: true });
 try {
   execSync("npm run build", { stdio: "inherit", env: { ...process.env, NEXT_PUBLIC_BASE_PATH: base } });
 } catch {
-  if (!existsSync(html)) throw new Error("O build falhou e não gerou o HTML do teaser.");
+  if (!existsSync(html) || (obrigado && !existsSync(htmlObrigado))) throw new Error("O build falhou e não gerou o HTML do teaser.");
   console.warn("Aviso: o build saiu com erro, mas o HTML foi gerado. Confira o aviso do Next acima.");
 }
 
@@ -37,6 +40,10 @@ rmSync(zip, { force: true });
 mkdirSync(saida);
 
 cpSync(html, `${saida}/index.html`);
+if (obrigado) {
+  mkdirSync(`${saida}/obrigado`);
+  cpSync(htmlObrigado, `${saida}/obrigado/index.html`);
+}
 cpSync(".next/static", `${saida}/_next/static`, { recursive: true });
 cpSync(`public/img/${imagens}`, `${saida}/img/${imagens}`, { recursive: true });
 cpSync(`public/img/logo/${logo}`, `${saida}/img/logo/${logo}`);
@@ -44,7 +51,7 @@ cpSync("src/app/icon.svg", `${saida}/icon.svg`);
 /* o Next gera o ícone em /icon.svg?hash; aqui ele é um arquivo estático comum */
 
 /* confere se toda referência local do HTML existe no pacote */
-const pagina = readFileSync(`${saida}/index.html`, "utf8");
+const pagina = [`${saida}/index.html`, ...(obrigado ? [`${saida}/obrigado/index.html`] : [])].map((f) => readFileSync(f, "utf8")).join(" ");
 const referencias = [...pagina.matchAll(new RegExp(`(?:src|href)="(${base}/(?:_next|img)/[^"?#]+)`, "g"))].map((m) => m[1]);
 if (!referencias.length) throw new Error(`Nenhuma referência a ${base}/ no HTML. O basePath foi aplicado?`);
 const faltando = [...new Set(referencias)].filter((c) => !existsSync(saida + decodeURIComponent(c).slice(base.length)));

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.2 · 2026-11-10 · página de confirmação do teaser de corretores
+
+- Rota `/teaser-corretor/obrigado/` trazida da versão que já estava no ar na Hostinger (era um HTML solto, fora do código): "Obrigado! Seu acesso prioritário está garantido.", com o monitoramento do RD. Texto em `teaserCorretor.obrigado` (`src/dados.ts`) e estilos em `teaser-corretor.css`.
+- `npm run corretor:zip` passa a incluir `obrigado/index.html` no pacote. O `index.html` da Hostinger era idêntico ao gerado aqui (só muda o ID do build).
+- Nada na página do teaser redireciona para `/obrigado/`: o cadastro mostra a confirmação na própria página.
+
 ## 0.4.1 · 2026-11-05 · fotos reais no mosaico do teaser de corretores
 
 - Mosaico "Empreendimentos entregues" com fotos reais de Viamão, Teresina, Caruaru e Paço do Lumiar, no lugar dos renders. O The One (Raposa · MA) saiu por não ter foto real.
