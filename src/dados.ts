@@ -573,10 +573,14 @@ export const teaserCorretor = {
   /* logo sem "Bairros Planejados" */
   logo: { src: `${base}/img/logo/logo-nova-harmonia-simples.svg`, alt: "Nova Harmonia", largura: 266, altura: 134 },
   hero: {
-    titulo: "A Nova Harmonia está preparando **grandes oportunidades de negócios** para a região de Gravataí, Cachoeirinha e Canoas.",
-    texto:
-      "Estamos chegando para movimentar o mercado imobiliário, repetindo o sucesso comercial que já construímos em diversos estados brasileiros, inclusive no Rio Grande do Sul, com o complexo de empreendimentos em Viamão.",
-    cta: "Cadastre-se para ter acesso prioritário às oportunidades!",
+    rotulo: "Novidades para o mercado imobiliário da Grande Porto Alegre",
+    titulo: "Corretor, vem novidade por aí.\nE você pode fazer parte!",
+    textos: [
+      "A Nova Harmonia está chegando a Gravataí, Cachoeirinha e Canoas com novos projetos imobiliários.",
+      "Com presença nacional, seguimos ampliando nossa atuação no Rio Grande do Sul. Queremos ter ao nosso lado corretores que conhecem a região e estão sempre em busca de boas oportunidades de negócios.",
+      "Cadastre-se e fique por dentro dos nossos próximos lançamentos.",
+    ],
+    cta: "Quero fazer parte",
     imagem: { src: corretorImg("stand"), largura: 1620, altura: 1080, alt: "Stand de vendas da Nova Harmonia" },
   },
   viamao: {
@@ -598,43 +602,44 @@ export const teaserCorretor = {
     ],
   },
   porte: {
-    titulo: "Porte nacional e **oportunidades** bem pertinho de você.",
-    texto:
-      "Consolidada e com diversos cases de sucesso espalhados pelo Brasil, a Nova Harmonia traz desenvolvimento urbano com o compromisso de ir além do básico, entregando infraestrutura que realmente traz melhoria na vida dos moradores.",
-    destaque: "Essa é a sua oportunidade de vender um produto de muita qualidade e lucrar bastante com isso.",
-    cta: "Quero ser um corretor parceiro.",
+    titulo: "Bons negócios começam\ncom boas parcerias.",
+    textos: [
+      "A Nova Harmonia atua no desenvolvimento de **bairros planejados e condomínios fechados** em diferentes regiões do Brasil, com atenção a cada detalhe dos seus projetos, da localização à infraestrutura.",
+      "Para nós, o corretor é parte fundamental dessa história. É quem conhece o mercado, entende as necessidades dos clientes e conecta pessoas a novas possibilidades.",
+      "E é com esse espírito de parceria que queremos chegar às novas cidades.",
+    ],
+    presenca: "Presença Nacional",
     numeros: [
-      { v: 11, rotulo: "estados" },
+      { v: 11, rotulo: "estados de atuação" },
       { v: 5, rotulo: "regiões do Brasil" },
     ],
   },
   vendas: {
-    titulo: "O sucesso dos projetos em Viamão comprovou a facilidade de comercialização dos nossos produtos.",
+    titulo: "Novos lançamentos.\nNovas possibilidades para você.",
+    chamada: "Se você atua em Gravataí, Cachoeirinha, Canoas ou região, queremos conhecer você!",
     textos: [
-      "Agora, chegou a hora de expandir essa história de valorização e ótimos resultados para Gravataí, Cachoeirinha e Canoas.",
-      "Conheça o nível de atuação da Nova Harmonia pelo Brasil e prepare-se para dar um importante passo em sua vida.",
+      "Estamos preparando nossos próximos lançamentos e queremos nos conectar com profissionais que desejam ampliar suas oportunidades de atuação no mercado imobiliário.",
+      "Faça seu cadastro, acompanhe as novidades e venha fazer parte dessa nova fase da Nova Harmonia no Rio Grande do Sul.",
     ],
-    cta: "Tenho interesse em fazer boas vendas!",
+    cta: "Quero conhecer os lançamentos",
     /* provisória: trocar pela foto de corretor em atendimento, fechando um negócio */
     imagem: { src: corretorImg("stand"), largura: 1620, altura: 1080, alt: "Stand de vendas da Nova Harmonia" },
   },
   cadastro: {
     /* o RD usa o name do <form> como identificador da conversão */
     identificadorRd: "teaser-corretor-nova-harmonia",
-    rotulo: "Acesso prioritário",
-    titulo: "Cadastre-se para ter acesso prioritário às oportunidades!",
-    perfil: "Você é",
+    titulo: "Seu próximo negócio\npode começar aqui.",
+    texto: "Cadastre-se para receber informações sobre os próximos lançamentos da Nova Harmonia em Gravataí, Cachoeirinha e Canoas.",
+    perfil: "Você é corretor de imóveis?",
     perfis: [
-      { valor: "autonomo", rotulo: "Corretor autônomo", imobiliaria: false },
-      { valor: "associado", rotulo: "Associado a imobiliária", imobiliaria: true },
-      { valor: "gestor", rotulo: "Gestor de imobiliária", imobiliaria: true },
+      { valor: "sim", rotulo: "Sim" },
+      { valor: "nao", rotulo: "Não" },
     ],
-    imobiliaria: { rotulo: "Nome da imobiliária", placeholder: "Nome da imobiliária" },
     nome: { rotulo: "Nome", placeholder: "Seu nome completo" },
     telefone: { rotulo: "WhatsApp", placeholder: "(00) 00000-0000" },
-    cidade: { rotulo: "Cidade onde atua", opcoes: ["Gravataí", "Cachoeirinha", "Canoas", "Outra"] },
+    cidade: { rotulo: "Cidade de atuação", opcoes: ["Gravataí", "Cachoeirinha", "Canoas", "Outra"] },
     email: { rotulo: "E-mail", placeholder: "voce@email.com" },
-    enviar: "Enviar cadastro",
+    enviar: "Quero receber as novidades",
     okTitulo: "Cadastro recebido.",
     ok: "Você terá acesso prioritário às oportunidades.",
   },

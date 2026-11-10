@@ -1,4 +1,5 @@
 import { teaserCorretor } from "@/dados";
+import { Rico } from "../Texto";
 import AbrirCadastro from "../teaser/AbrirCadastro";
 
 export default function CorretorVendas() {
@@ -9,7 +10,10 @@ export default function CorretorVendas() {
         <img src={vendas.imagem.src} alt={vendas.imagem.alt} width={vendas.imagem.largura} height={vendas.imagem.altura} loading="lazy" decoding="async" />
       </div>
       <div className="tc-vendas-txt">
-        <h2>{vendas.titulo}</h2>
+        <h2>
+          <Rico texto={vendas.titulo} />
+        </h2>
+        <p className="tc-chamada">{vendas.chamada}</p>
         {vendas.textos.map((t) => (
           <p key={t}>{t}</p>
         ))}

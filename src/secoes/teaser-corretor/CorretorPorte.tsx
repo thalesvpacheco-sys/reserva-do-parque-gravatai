@@ -1,7 +1,6 @@
 import { teaserCorretor } from "@/dados";
 import Contador from "../Contador";
 import { Rico } from "../Texto";
-import AbrirCadastro from "../teaser/AbrirCadastro";
 
 export default function CorretorPorte() {
   const { porte } = teaserCorretor;
@@ -13,20 +12,25 @@ export default function CorretorPorte() {
             <Rico texto={porte.titulo} />
           </h2>
           <div className="tc-porte-txt">
-            <p>{porte.texto}</p>
-            <p className="tc-destaque">{porte.destaque}</p>
-            <AbrirCadastro texto={porte.cta} cor="verde" />
+            {porte.textos.map((t) => (
+              <p key={t}>
+                <Rico texto={t} />
+              </p>
+            ))}
           </div>
         </div>
-        <div className="tc-nums">
-          {porte.numeros.map((n) => (
-            <div key={n.rotulo}>
-              <strong>
-                <Contador v={n.v} />
-              </strong>
-              <span>{n.rotulo}</span>
-            </div>
-          ))}
+        <div className="tc-presenca">
+          <h3>{porte.presenca}</h3>
+          <div className="tc-nums">
+            {porte.numeros.map((n) => (
+              <div key={n.rotulo}>
+                <strong>
+                  <Contador v={n.v} />
+                </strong>
+                <span>{n.rotulo}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

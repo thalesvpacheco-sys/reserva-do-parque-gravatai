@@ -102,12 +102,12 @@ Os teasers são HTML estático na hospedagem do WordPress, sem servidor Next, en
 | Teaser | Identificador da conversão (`name` do `<form>`) | Campos |
 | --- | --- | --- |
 | Clientes | `teaser-cliente-nova-harmonia` | `nome`, `telefone`, `cidade`, `email`, `consentimento` |
-| Corretores | `teaser-corretor-nova-harmonia` | os mesmos, mais `perfil` e `imobiliaria` (só para quem é de imobiliária) |
+| Corretores | `teaser-corretor-nova-harmonia` | os mesmos, mais `perfil` (`sim` ou `nao`, da pergunta "Você é corretor de imóveis?") |
 
 - Em campos escondidos (`CamposRastreioRd.tsx`) vão as 5 UTMs, `gclid`, `fbclid` e a URL de entrada completa: `traffic_source`, `traffic_medium`, `traffic_campaign`, `traffic_value`, `cf_utm_source`, `cf_utm_medium`, `cf_utm_campaign`, `cf_utm_term`, `cf_utm_content`, `cf_gclid`, `cf_fbclid` e `cf_url_entrada`. Os `cf_utm_*` existem porque o cookie do RD sobrescreve o `traffic_source` e a URL da conversão vai sem os parâmetros. Os campos personalizados precisam existir no RD.
 - Vale a campanha inteira da última visita que veio com parâmetros, sem misturar duas campanhas. Quem volta sem UTM mantém a campanha guardada (`localStorage`), o que também vale ao testar no mesmo navegador.
 - O checkbox de aceite leva `data-privacy="true"` e `value="1"`, exigidos pelo RD para registrar o consentimento.
-- **Mapeamento no RD** (Integrações > Integração de formulário > Editar), já feito nos dois identificadores: `telefone` em Celular, `consentimento` em Consentimento de Comunicação e, nos corretores, `imobiliaria` em Imobiliária. Sem isso o aceite não vira base legal e o número cai em Telefone fixo. `perfil`, `cf_gclid`, `cf_fbclid` e `cf_url_entrada` não têm campo correspondente no RD e ficam só na planilha, até serem criados lá.
+- **Mapeamento no RD** (Integrações > Integração de formulário > Editar), já feito nos dois identificadores: `telefone` em Celular, `consentimento` em Consentimento de Comunicação. O campo `imobiliaria` saiu do formulário dos corretores (o mapeamento no RD pode ficar). Sem isso o aceite não vira base legal e o número cai em Telefone fixo. `perfil`, `cf_gclid`, `cf_fbclid` e `cf_url_entrada` não têm campo correspondente no RD e ficam só na planilha, até serem criados lá.
 - Um formulário só aparece nessa tela depois da primeira conversão. Os dois estão listados com a URL local do primeiro teste, mas valem pelo identificador: conversões de `novaharmonia.com.br` usam o mesmo mapeamento, sem criar outra entrada.
 - O CV CRM não recebe estes leads pela integração direta: será ligado por um fluxo de automação no RD.
 - **Testes geram lead de verdade.** O script envia de qualquer endereço, inclusive de `localhost` e de `/teaser-aprovacao/`.

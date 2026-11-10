@@ -8,10 +8,13 @@ export default function CorretorHero() {
     <section className="tc-hero">
       <div className="tc-hero-txt">
         <img src={logo.src} alt={logo.alt} width={logo.largura} height={logo.altura} />
+        <span className="tz-rot">{hero.rotulo}</span>
         <h1>
           <Rico texto={hero.titulo} />
         </h1>
-        <p>{hero.texto}</p>
+        {hero.textos.map((t) => (
+          <p key={t}>{t}</p>
+        ))}
         <AbrirCadastro texto={hero.cta} cor="verde" />
       </div>
       <div className="tc-foto">

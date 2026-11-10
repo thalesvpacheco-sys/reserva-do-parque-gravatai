@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { cadastro as cadastroLP, empreendimento, teaserCorretor } from "@/dados";
 import { aoDigitarTelefone } from "../util";
+import { Rico } from "../Texto";
 import CamposRastreioRd from "../teaser/CamposRastreioRd";
 import { enviarPlanilha } from "../teaser/planilha";
 
@@ -17,7 +18,6 @@ export default function CadastroCorretor() {
   const { aceite } = cadastroLP.form;
   const [perfil, setPerfil] = useState(cadastro.perfis[0].valor);
   const [enviado, setEnviado] = useState(false);
-  const pedeImobiliaria = cadastro.perfis.find((p) => p.valor === perfil)?.imobiliaria ?? false;
 
   const submeter = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,8 +34,10 @@ export default function CadastroCorretor() {
     <section className="tc-cad" id="cadastro" aria-labelledby="tc-cad-t">
       <div className="tz-wrap">
         <div className="tc-cad-tit">
-          <span className="tz-rot">{cadastro.rotulo}</span>
-          <h2 id="tc-cad-t">{cadastro.titulo}</h2>
+          <h2 id="tc-cad-t">
+            <Rico texto={cadastro.titulo} />
+          </h2>
+          <p>{cadastro.texto}</p>
         </div>
         <div className="tc-cartao">
           <form className="tz-form" name={cadastro.identificadorRd} noValidate hidden={enviado} onSubmit={submeter}>
@@ -50,12 +52,6 @@ export default function CadastroCorretor() {
                 ))}
               </div>
             </fieldset>
-            {pedeImobiliaria && (
-              <label className="tz-full" htmlFor="tc-imob">
-                {cadastro.imobiliaria.rotulo}
-                <input id="tc-imob" name="imobiliaria" type="text" autoComplete="organization" placeholder={cadastro.imobiliaria.placeholder} required />
-              </label>
-            )}
             <label className="tz-full" htmlFor="tc-nome">
               {cadastro.nome.rotulo}
               <input id="tc-nome" name="nome" type="text" autoComplete="name" placeholder={cadastro.nome.placeholder} required minLength={2} />

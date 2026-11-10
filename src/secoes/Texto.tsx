@@ -1,17 +1,31 @@
 import { Fragment, type ReactNode } from "react";
 import { pendente } from "./util";
 
-/* **negrito** vira <strong> e *itálico* vira <em> */
+/* **negrito** vira <strong>, *itálico* vira <em> e \n vira quebra de linha */
+function Linhas({ texto }: { texto: string }) {
+  const linhas = texto.split("\n");
+  return (
+    <>
+      {linhas.map((l, i) => (
+        <Fragment key={i}>
+          {i > 0 && <br />}
+          {l}
+        </Fragment>
+      ))}
+    </>
+  );
+}
+
 export function Rico({ texto }: { texto: string }) {
   const partes: ReactNode[] = [];
   const re = /\*\*(.+?)\*\*|\*(.+?)\*/g;
   let ult = 0;
   for (const m of texto.matchAll(re)) {
-    if (m.index > ult) partes.push(texto.slice(ult, m.index));
+    if (m.index > ult) partes.push(<Linhas key={`t${ult}`} texto={texto.slice(ult, m.index)} />);
     partes.push(m[1] !== undefined ? <strong key={m.index}>{m[1]}</strong> : <em key={m.index}>{m[2]}</em>);
     ult = m.index + m[0].length;
   }
-  if (ult < texto.length) partes.push(texto.slice(ult));
+  if (ult < texto.length) partes.push(<Linhas key={`t${ult}`} texto={texto.slice(ult)} />);
   return <Fragment>{partes}</Fragment>;
 }
 
