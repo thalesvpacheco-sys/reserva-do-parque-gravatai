@@ -4,8 +4,7 @@
 
 - Textos da abertura, da apresentação (Presença Nacional, 11 estados de atuação e 5 regiões), do convite e do formulário trocados pelos dos slides do cliente. A panorâmica de Viamão e o mosaico de empreendimentos ficam como estavam.
 - Formulário: a pergunta "Você é corretor de imóveis?" (Sim ou Não, em `perfil`) substitui as três opções de perfil, e o campo Nome da imobiliária saiu. Botão "Quero receber as novidades".
-- A apresentação perdeu o botão (os slides não têm). Títulos aceitam quebra de linha com `
-` no `Rico`.
+- A apresentação perdeu o botão (os slides não têm). Títulos aceitam quebra de linha com `\n` no `Rico`.
 
 ## 0.4.2 · 2026-11-10 · página de confirmação do teaser de corretores
 
