@@ -445,12 +445,18 @@ export const rodape = {
 
 /*
  * Teaser da Nova Harmonia para Gravataí, Cachoeirinha e Canoas (rota /teaser-aprovacao/).
- * Página de aprovação: o cadastro dela não envia dados. "confirmar" marca o que ainda
- * precisa de resposta do cliente e aparece com o tracejado .tz-pend.
+ * "confirmar" marca o que ainda precisa de resposta do cliente e aparece com o tracejado .tz-pend.
  */
 /* o <img> não recebe o basePath sozinho: no zip do teaser as imagens ficam em /teaser/img/ */
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const teaserImg = (nome: string) => `${base}/img/teaser/${nome}.webp`;
+
+/* código de monitoramento do RD Station da Nova Harmonia, usado nos dois teasers */
+export const rdMonitoramento = "https://d335luupugsy2.cloudfront.net/js/loader-scripts/8a3efd75-c32c-45a9-a769-642b1c31737e-loader.js";
+
+/* URL do app da Web de scripts/planilha-leads.gs; vazia, nada vai para a planilha de backup */
+export const planilhaLeads = "https://script.google.com/macros/s/AKfycbzK2-WCw-lWnmjnHYLtacP58uHXawQiWeBStHH9o4FewKZUc_To0Nyy0KTdbfwmeCvYfg/exec";
+
 export const teaser = {
   /* no zip a página vai para novaharmonia.com.br/teaser-cliente/ (scripts/zip-teaser.mjs); o basePath já entra no canonical */
   url: `${base}/`,
@@ -526,6 +532,8 @@ export const teaser = {
     titulo: "Receba informações sobre o próximo grande empreendimento da Nova Harmonia!",
   },
   cadastro: {
+    /* o RD usa o name do <form> como identificador da conversão */
+    identificadorRd: "teaser-cliente-nova-harmonia",
     rotulo: "Acesso exclusivo",
     titulo: "Quero me cadastrar!",
     nome: { rotulo: "Nome", placeholder: "Seu nome completo" },
@@ -535,7 +543,6 @@ export const teaser = {
     enviar: "Enviar cadastro",
     okTitulo: "Cadastro recebido.",
     ok: "Você vai receber as novidades antes de todo mundo.",
-    aviso: "Versão de aprovação: nenhum dado foi enviado.",
   },
   rodape: {
     telefone: "(51) 99719-6426",
@@ -543,5 +550,96 @@ export const teaser = {
     copyright: "© 2026 Nova Harmonia. Todos os direitos reservados.",
     legal:
       "Este site e todo o seu conteúdo, incluindo textos, imagens, logotipos, gráficos, documentos e demais materiais, são de propriedade exclusiva da Nova Harmonia, sendo protegidos pelas leis de direitos autorais e propriedade intelectual. É proibida a reprodução, distribuição ou alteração dos conteúdos sem autorização prévia e expressa dos responsáveis legais.",
+  },
+};
+
+
+/*
+ * Teaser da Nova Harmonia para corretores (rota /teaser-corretor/; no zip vira
+ * novaharmonia.com.br/teaser-corretor/, ver scripts/zip-teaser.mjs). Versão escolhida no
+ * protótipo: DCBBBCA, títulos em 400.
+ */
+const corretorImg = (nome: string) => `${base}/img/teaser-corretor/${nome}.webp`;
+
+export const teaserCorretor = {
+  url: `${base}/`,
+  dominio: "https://novaharmonia.com.br",
+  seo: {
+    titulo: "Nova Harmonia | Oportunidades para corretores em Gravataí, Cachoeirinha e Canoas",
+    descricao:
+      "A Nova Harmonia está preparando grandes oportunidades de negócios para a região de Gravataí, Cachoeirinha e Canoas. Cadastre-se para ter acesso prioritário às oportunidades.",
+    og: { imagem: corretorImg("sol"), largura: 1919, altura: 1065, alt: "Símbolo da Nova Harmonia ao pôr do sol, no Parque Harmonia, em Viamão" },
+  },
+  /* logo sem "Bairros Planejados" */
+  logo: { src: `${base}/img/logo/logo-nova-harmonia-simples.svg`, alt: "Nova Harmonia", largura: 266, altura: 134 },
+  hero: {
+    titulo: "A Nova Harmonia está preparando **grandes oportunidades de negócios** para a região de Gravataí, Cachoeirinha e Canoas.",
+    texto:
+      "Estamos chegando para movimentar o mercado imobiliário, repetindo o sucesso comercial que já construímos em diversos estados brasileiros, inclusive no Rio Grande do Sul, com o complexo de empreendimentos em Viamão.",
+    cta: "Cadastre-se para ter acesso prioritário às oportunidades!",
+    imagem: { src: corretorImg("stand"), largura: 1620, altura: 1080, alt: "Stand de vendas da Nova Harmonia" },
+  },
+  viamao: {
+    rotulo: "Parque Harmonia · Viamão · RS",
+    frase: "O sucesso comercial que já construímos.",
+    imagem: { src: corretorImg("sol"), largura: 1919, altura: 1065, alt: "Símbolo da Nova Harmonia e letreiro Eu amo Viamão ao pôr do sol, no Parque Harmonia" },
+  },
+  obras: {
+    rotulo: "Empreendimentos entregues",
+    titulo: "Em Viamão e em outros estados.",
+    /* todas fotos reais de obra, na pasta Nova Harmonia da Grifo: Viamão (FOTOS REAIS), Teresina
+       (A- Hoje/babaçus), Caruaru (A- Hoje/CARUARU) e Paço do Lumiar (A- Hoje/Blog). O The One
+       (Raposa · MA) saiu porque não há foto real dele, só render. */
+    itens: [
+      { src: corretorImg("sol"), largura: 1919, altura: 1065, nome: "Parque Harmonia", local: "Viamão · RS", alt: "Parque Harmonia, Viamão, RS" },
+      { src: corretorImg("teresina-babacus"), largura: 1200, altura: 900, nome: "Reserva dos Babaçus", local: "Teresina · PI", alt: "Rua com calçada e iluminação no Reserva dos Babaçus, Teresina, PI" },
+      { src: corretorImg("caruaru-ponte"), largura: 1400, altura: 788, nome: "Reserva Harmonia", local: "Caruaru · PE", alt: "Ponte de acesso ao Reserva Harmonia, Caruaru, PE" },
+      { src: corretorImg("paco-lumiar-rotatoria"), largura: 1600, altura: 900, nome: "Reserva Harmonia", local: "Paço do Lumiar · MA", alt: "Rotatória com o símbolo da Nova Harmonia no Reserva Harmonia, Paço do Lumiar, MA", posicao: "50% 88%" },
+    ],
+  },
+  porte: {
+    titulo: "Porte nacional e **oportunidades** bem pertinho de você.",
+    texto:
+      "Consolidada e com diversos cases de sucesso espalhados pelo Brasil, a Nova Harmonia traz desenvolvimento urbano com o compromisso de ir além do básico, entregando infraestrutura que realmente traz melhoria na vida dos moradores.",
+    destaque: "Essa é a sua oportunidade de vender um produto de muita qualidade e lucrar bastante com isso.",
+    cta: "Quero ser um corretor parceiro.",
+    numeros: [
+      { v: 11, rotulo: "estados" },
+      { v: 5, rotulo: "regiões do Brasil" },
+    ],
+  },
+  vendas: {
+    titulo: "O sucesso dos projetos em Viamão comprovou a facilidade de comercialização dos nossos produtos.",
+    textos: [
+      "Agora, chegou a hora de expandir essa história de valorização e ótimos resultados para Gravataí, Cachoeirinha e Canoas.",
+      "Conheça o nível de atuação da Nova Harmonia pelo Brasil e prepare-se para dar um importante passo em sua vida.",
+    ],
+    cta: "Tenho interesse em fazer boas vendas!",
+    /* provisória: trocar pela foto de corretor em atendimento, fechando um negócio */
+    imagem: { src: corretorImg("stand"), largura: 1620, altura: 1080, alt: "Stand de vendas da Nova Harmonia" },
+  },
+  cadastro: {
+    /* o RD usa o name do <form> como identificador da conversão */
+    identificadorRd: "teaser-corretor-nova-harmonia",
+    rotulo: "Acesso prioritário",
+    titulo: "Cadastre-se para ter acesso prioritário às oportunidades!",
+    perfil: "Você é",
+    perfis: [
+      { valor: "autonomo", rotulo: "Corretor autônomo", imobiliaria: false },
+      { valor: "associado", rotulo: "Associado a imobiliária", imobiliaria: true },
+      { valor: "gestor", rotulo: "Gestor de imobiliária", imobiliaria: true },
+    ],
+    imobiliaria: { rotulo: "Nome da imobiliária", placeholder: "Nome da imobiliária" },
+    nome: { rotulo: "Nome", placeholder: "Seu nome completo" },
+    telefone: { rotulo: "WhatsApp", placeholder: "(00) 00000-0000" },
+    cidade: { rotulo: "Cidade onde atua", opcoes: ["Gravataí", "Cachoeirinha", "Canoas", "Outra"] },
+    email: { rotulo: "E-mail", placeholder: "voce@email.com" },
+    enviar: "Enviar cadastro",
+    okTitulo: "Cadastro recebido.",
+    ok: "Você terá acesso prioritário às oportunidades.",
+  },
+  rodape: {
+    copyright: teaser.rodape.copyright,
+    legal: teaser.rodape.legal,
   },
 };

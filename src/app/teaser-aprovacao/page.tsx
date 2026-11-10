@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { teaser } from "@/dados";
 import CadastroTeaser from "@/secoes/teaser/CadastroTeaser";
+import MonitoramentoRd from "@/secoes/teaser/MonitoramentoRd";
 import TeaserFamilia from "@/secoes/teaser/TeaserFamilia";
 import TeaserHero from "@/secoes/teaser/TeaserHero";
 import TeaserHistoria from "@/secoes/teaser/TeaserHistoria";
@@ -46,6 +47,7 @@ export default function TeaserAprovacao() {
         <CadastroTeaser />
       </main>
       <TeaserRodape />
+      <MonitoramentoRd />
     </div>
   );
 }

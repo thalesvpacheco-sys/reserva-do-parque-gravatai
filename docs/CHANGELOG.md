@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.4.1 · 2026-11-05 · fotos reais no mosaico do teaser de corretores
+
+- Mosaico "Empreendimentos entregues" com fotos reais de Viamão, Teresina, Caruaru e Paço do Lumiar, no lugar dos renders. O The One (Raposa · MA) saiu por não ter foto real.
+- Legenda com cidade e UF em todas as fotos.
+
+## 0.4.0 · 2026-11-04 · RD Station nos teasers
+
+- Código de monitoramento do RD nos dois teasers (`MonitoramentoRd`).
+- Cadastros preparados para a captura do RD: identificador da conversão no `name` do formulário, consentimento com `data-privacy` e UTMs em campos escondidos (`CamposRastreioRd`).
+- Saiu da confirmação o aviso "nenhum dado foi enviado".
+- UTMs completas: `cf_utm_*` e URL de entrada no formulário, sempre com a campanha inteira da última visita com parâmetros.
+- Cópia de cada lead na planilha de backup, pelo Apps Script de `scripts/planilha-leads.gs`. Só envia depois de preencher `planilhaLeads` em `src/dados.ts`.
+
+## 0.3.0 · 2026-11-03 · teaser de corretores
+
+- Rota `/teaser-corretor/` a partir do protótipo escolhido (DCBBBCA, títulos em 400): abertura meio a meio, panorâmica de Viamão, mosaico de empreendimentos, porte nacional com números, vendas com foto e texto e cadastro em cartão, aberto na página, com o perfil do corretor.
+- Logo sem "Bairros Planejados" em `public/img/logo/logo-nova-harmonia-simples.svg`.
+- `scripts/zip-teaser.mjs` agora atende aos dois teasers (`npm run teaser:zip` e `npm run corretor:zip`), e a conferência de arquivos do pacote usa a base de cada um.
+
 ## 0.2.0 · 2026-10-29 · teaser de aprovação
 
 - Rota `/teaser-aprovacao/` com o teaser da Nova Harmonia: abertura, mapa do Brasil que desce até Viamão com a rolagem, solidez nacional com contador, carrossel de obras, foto da família, rodapé e cadastro em diálogo.

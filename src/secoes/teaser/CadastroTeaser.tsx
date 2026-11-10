@@ -3,11 +3,14 @@
 import { useState, type FormEvent } from "react";
 import { cadastro as cadastroLP, empreendimento, teaser } from "@/dados";
 import { aoDigitarTelefone } from "../util";
+import CamposRastreioRd from "./CamposRastreioRd";
+import { enviarPlanilha } from "./planilha";
 
 /*
- * Formulário de cadastro do teaser, aberto na página (o RD Station não enxerga popup).
- * Versão de aprovação: valida como o formulário da LP, mas não envia nada.
- * Para ligar de verdade, poste em /api/lead/ como o LeadForm ou troque pelo formulário do RD.
+ * Formulário de cadastro do teaser, aberto na página. O código de monitoramento do RD (MonitoramentoRd)
+ * captura o envio sozinho, no clique do botão, se o formulário estiver válido. Por isso o <form> precisa
+ * estar no HTML desde o início, o name dele é o identificador da conversão e o botão não pode ser recriado.
+ * Aqui validamos, mandamos a cópia para a planilha e mostramos a confirmação. Campos e mapeamento: README, "Lead dos teasers".
  */
 export default function CadastroTeaser() {
   const { cadastro } = teaser;
@@ -21,6 +24,7 @@ export default function CadastroTeaser() {
       inv.reportValidity();
       return;
     }
+    enviarPlanilha(e.currentTarget);
     setEnviado(true);
   };
 
@@ -29,7 +33,7 @@ export default function CadastroTeaser() {
       <div className="tz-cad-in">
         <span className="tz-rot tz-rot-ipe">{cadastro.rotulo}</span>
         <h2 id="tz-cad-t">{cadastro.titulo}</h2>
-        <form className="tz-form" noValidate hidden={enviado} onSubmit={submeter}>
+        <form className="tz-form" name={cadastro.identificadorRd} noValidate hidden={enviado} onSubmit={submeter}>
           <label className="tz-full" htmlFor="tz-nome">
             {cadastro.nome.rotulo}
             <input id="tz-nome" name="nome" type="text" autoComplete="name" placeholder={cadastro.nome.placeholder} required minLength={2} />
@@ -61,7 +65,7 @@ export default function CadastroTeaser() {
             <input id="tz-email" name="email" type="email" autoComplete="email" placeholder={cadastro.email.placeholder} required />
           </label>
           <label className="tz-full tz-aceite" htmlFor="tz-ok">
-            <input id="tz-ok" name="consentimento" type="checkbox" required />
+            <input id="tz-ok" name="consentimento" type="checkbox" value="1" data-privacy="true" required />
             <span>
               {aceite.antes}
               <a href={empreendimento.privacidade} target="_blank" rel="noopener">
@@ -70,13 +74,14 @@ export default function CadastroTeaser() {
               {aceite.depois}
             </span>
           </label>
+          <CamposRastreioRd />
           <button className="tz-bt tz-bt-ipe tz-full" type="submit">
             {cadastro.enviar}
           </button>
         </form>
         <p className="tz-ok" role="status" hidden={!enviado}>
           <strong>{cadastro.okTitulo}</strong>
-          {cadastro.ok} ({cadastro.aviso})
+          {cadastro.ok}
         </p>
       </div>
     </section>

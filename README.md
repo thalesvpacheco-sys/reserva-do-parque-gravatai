@@ -41,6 +41,7 @@ src/
     layout.tsx       fonte, metadata (SEO, Open Graph) e JSON-LD (Organization, Place, FAQPage)
     page.tsx         monta as seções na ordem do protótipo
     teaser-aprovacao/  rota /teaser-aprovacao/ (page.tsx e teaser.css), ver "Teaser de aprovação"
+    teaser-corretor/   rota /teaser-corretor/ (page.tsx e teaser-corretor.css), ver "Teaser de corretores"
     globals.css      Tailwind (theme + utilities) e tokens
     lp.css           classes do protótipo, com os mesmos nomes
     icon.png, robots.ts, sitemap.ts
@@ -48,6 +49,7 @@ src/
   dados.ts           TODO o conteúdo (textos, números, links, imagens, meta tags)
   secoes/            um componente por seção, mais Contador, JsonLd, Texto (Rico/Valor), util, useSwipe e whatsapp
     teaser/          componentes do teaser de aprovação
+    teaser-corretor/ componentes do teaser de corretores
 ```
 
 Nenhum texto fica dentro de `src/secoes/`. Para mudar conteúdo, edite `src/dados.ts`. Nos textos, `**assim**` vira `<strong>` e `*assim*` vira `<em>`.
@@ -80,9 +82,48 @@ Também pendentes, fora do código:
 
 - Conteúdo em `teaser` (`src/dados.ts`), componentes em `src/secoes/teaser/` e estilos em `src/app/teaser-aprovacao/teaser.css`. Todas as classes levam o prefixo `tz-`, porque o `lp.css` é global.
 - Fora dos buscadores: `noindex` na página, bloqueada no `robots.txt` e fora do `sitemap.xml`.
-- O cadastro valida os campos, mas **não envia nada** (a confirmação avisa isso). Para ligar de verdade, poste em `/api/lead/` como o `LeadForm` faz e crie um `cf_empreendimento` próprio para o teaser, senão o lead entra no RD como Reserva do Parque.
+- O cadastro envia ao RD pelo código de monitoramento: ver [Lead dos teasers](#lead-dos-teasers).
 - Pendências marcadas com tracejado (passe o mouse para ver a pergunta): número de estados (11) e telefone `(51) 99719-6426`, que é o das outras LPs.
 - Imagens em `public/img/teaser/`. O JSON-LD da LP fica em `src/secoes/JsonLd.tsx` e só a home usa.
+
+## Teaser de corretores
+
+`/teaser-corretor/` é a versão do teaser para corretores e imobiliárias, a combinação DCBBBCA do protótipo, com títulos em peso 400.
+
+- Conteúdo em `teaserCorretor` (`src/dados.ts`), componentes em `src/secoes/teaser-corretor/` e estilos em `src/app/teaser-corretor/teaser-corretor.css`, com prefixo `tc-`. A base (`tz-`) vem do `teaser.css`.
+- Publicação: `npm run corretor:zip` gera `teaser-corretor-site.zip`, para extrair dentro de `public_html/teaser-corretor/`. O dos clientes é `npm run teaser:zip`, para `public_html/teaser-cliente/`.
+- O cadastro envia ao RD pelo código de monitoramento: ver [Lead dos teasers](#lead-dos-teasers). Fora dos buscadores, como o dos clientes.
+- A foto do bloco de vendas é provisória: falta a de corretor em atendimento.
+
+## Lead dos teasers
+
+Os teasers são HTML estático na hospedagem do WordPress, sem servidor Next, então não usam `/api/lead/`. Quem envia é o código de monitoramento do RD (`src/secoes/teaser/MonitoramentoRd.tsx`), que captura o formulário no clique do botão, se ele estiver válido, e manda a conversão direto ao RD.
+
+| Teaser | Identificador da conversão (`name` do `<form>`) | Campos |
+| --- | --- | --- |
+| Clientes | `teaser-cliente-nova-harmonia` | `nome`, `telefone`, `cidade`, `email`, `consentimento` |
+| Corretores | `teaser-corretor-nova-harmonia` | os mesmos, mais `perfil` e `imobiliaria` (só para quem é de imobiliária) |
+
+- Em campos escondidos (`CamposRastreioRd.tsx`) vão as 5 UTMs, `gclid`, `fbclid` e a URL de entrada completa: `traffic_source`, `traffic_medium`, `traffic_campaign`, `traffic_value`, `cf_utm_source`, `cf_utm_medium`, `cf_utm_campaign`, `cf_utm_term`, `cf_utm_content`, `cf_gclid`, `cf_fbclid` e `cf_url_entrada`. Os `cf_utm_*` existem porque o cookie do RD sobrescreve o `traffic_source` e a URL da conversão vai sem os parâmetros. Os campos personalizados precisam existir no RD.
+- Vale a campanha inteira da última visita que veio com parâmetros, sem misturar duas campanhas. Quem volta sem UTM mantém a campanha guardada (`localStorage`), o que também vale ao testar no mesmo navegador.
+- O checkbox de aceite leva `data-privacy="true"` e `value="1"`, exigidos pelo RD para registrar o consentimento.
+- **Mapeamento no RD** (Integrações > Integração de formulário > Editar), já feito nos dois identificadores: `telefone` em Celular, `consentimento` em Consentimento de Comunicação e, nos corretores, `imobiliaria` em Imobiliária. Sem isso o aceite não vira base legal e o número cai em Telefone fixo. `perfil`, `cf_gclid`, `cf_fbclid` e `cf_url_entrada` não têm campo correspondente no RD e ficam só na planilha, até serem criados lá.
+- Um formulário só aparece nessa tela depois da primeira conversão. Os dois estão listados com a URL local do primeiro teste, mas valem pelo identificador: conversões de `novaharmonia.com.br` usam o mesmo mapeamento, sem criar outra entrada.
+- O CV CRM não recebe estes leads pela integração direta: será ligado por um fluxo de automação no RD.
+- **Testes geram lead de verdade.** O script envia de qualquer endereço, inclusive de `localhost` e de `/teaser-aprovacao/`.
+- Não há `cf_empreendimento` nem campo isca: o RD captura tudo o que estiver no formulário, sem filtro. Quem bloqueia o script (bloqueador de anúncios) vê a confirmação, mas o lead não chega.
+
+### Planilha de backup
+
+Cada cadastro também vai direto do formulário (`src/secoes/teaser/planilha.ts`) para a planilha "Backup NV HARMONIA - LEADS lançamento", sem passar pelo RD. Chega mesmo se o script do RD for bloqueado. Colunas: data, teaser, os campos do formulário, as 5 UTMs, `gclid`, `fbclid` e a URL de entrada.
+
+Para ligar:
+
+1. Na planilha, abra Extensões > Apps Script e cole o conteúdo de `scripts/planilha-leads.gs`.
+2. Implantar > Nova implantação > App da Web. Executar como **Eu**, acesso a **Qualquer pessoa**. Autorize com a conta dona da planilha.
+3. Copie a URL terminada em `/exec` para `planilhaLeads` em `src/dados.ts` e gere os zips. Com `planilhaLeads` vazia, nada é enviado.
+
+Alterar o script ou o acesso depois exige nova versão em Implantar > Gerenciar implantações, mantendo a mesma URL. Se um POST sem login na URL responder 401, o acesso não está em **Qualquer pessoa** e os visitantes não gravam na planilha. A URL é pública e só permite escrever. O script ignora envios sem aceite, sem e-mail válido ou de teaser desconhecido, e impede que um texto vire fórmula. A planilha guarda dados pessoais: compartilhe só com quem precisa.
 
 ## Lead
 
